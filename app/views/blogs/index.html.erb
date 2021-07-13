@@ -1,6 +1,8 @@
-<div class="container"><p id="notice"><%= notice %></p>
-  <h1>ブログ一覧</h1>
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <h1 class="text-center">ブログ一覧</h1>
   <br>
+  <div class="flex-container">
     <ul class="list-group">
       <% @blogs.each.with_index(1) do | blog, n | %>
         <li class="list-group-item list-group-item-success"><b><%= "#{n}番目のブログ" %></b></li>
@@ -11,5 +13,8 @@
         <br><br>
       <% end %>
     </ul>
-  <%= link_to '新規作成', new_blog_path, class: 'btn btn-primary' %>
+  </div>
+  <div class="flex-container">
+    <%= link_to '新規作成', new_blog_path, class: 'btn btn-primary' %>
+  </div>
 </div>
