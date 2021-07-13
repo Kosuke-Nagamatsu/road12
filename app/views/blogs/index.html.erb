@@ -1,31 +1,15 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Blogs</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Note</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @blogs.each do |blog| %>
-      <tr>
-        <td><%= blog.title %></td>
-        <td><%= blog.content %></td>
-        <td><%= blog.note %></td>
-        <td><%= link_to 'Show', blog %></td>
-        <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
-        <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Blog', new_blog_path %>
+<div class="container"><p id="notice"><%= notice %></p>
+  <h1>ブログ一覧</h1>
+  <br>
+    <ul class="list-group">
+      <% @blogs.each.with_index(1) do | blog, n | %>
+        <li class="list-group-item list-group-item-success"><b><%= "#{n}番目のブログ" %></b></li>
+        <li class="list-group-item">タイトル：<%= blog.title %></li>
+        <li class="list-group-item">内容：<%= blog.content %></li>
+        <li class="list-group-item">備考：<%= blog.note %></li>
+        <li class="list-group-item"><%= link_to '詳細', blog %> <%= link_to '編集', edit_blog_path(blog) %> <%= link_to '削除', blog, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+        <br><br>
+      <% end %>
+    </ul>
+  <%= link_to '新規作成', new_blog_path, class: 'btn btn-primary' %>
+</div>
